@@ -12,15 +12,26 @@
 \documentclass{article}
 \usepackage{sectsty}
 \usepackage[english]{babel}
-% Font Package for XeLatex
-\usepackage{fontspec}
-\setmainfont{Avenir-Light}
-
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \setmainfont{Avenir-Light}
+  \else
+  % Font Package for XeLatex
+    \usepackage{fontspec}
+    \setmainfont{Avenir-Light}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{extramarks}
 \usepackage{gensymb}
-\usepackage{amsmath}
 \usepackage{lipsum}
 \usepackage{float}
 \usepackage{graphicx}
@@ -31,6 +42,48 @@
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage{cite}
 \usepackage{geometry}
+
+% -----------------------------------------------------------------------------------
+%                 PACKAGES FOR MARKDOWN CONVERSION
+% -----------------------------------------------------------------------------------
+
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Pandoc User's Guide},
+            pdfauthor={John MacFarlane},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{fancyvrb}
+\VerbatimFootnotes % allows verbatim text in footnotes
+\usepackage{longtable,booktabs}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}s
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
 % -----------------------------------------------------------------------------------
 %                   NAMES & CLASS DEFINITION %<<<<<<<<< INSERT DETAILS HERE
