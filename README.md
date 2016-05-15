@@ -9,7 +9,7 @@ The script archives old verisons of the files as backups
 Homebrew (Optional)
 Pandoc - Using Homebrew (Can use tarz) (Mac OSX)
 
-To install opent the terminal
+To install open the terminal
 ```
 brew install pandoc
 ```
