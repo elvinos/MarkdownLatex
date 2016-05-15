@@ -1,0 +1,197 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                      %
+%         Bristol Project LaTex Template            %
+%                                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Author: Alex Charles           Email: aep.charles@gmail.com
+%
+% -----------------------------------------------------------------------------------
+%      PACKAGES & OTHER DOCUMENT CONFIGURATIONS
+% -----------------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{sectsty}
+\usepackage[english]{babel}
+% Font Package for XeLatex
+\usepackage{fontspec}
+\setmainfont{Avenir-Light}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{graphicx}
+\graphicspath{{TempImg/}{Img/}}%<<<<<<<<< Location of Template Images and Other Images, Add folders here
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage[font ={small,it}]{caption}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{cite}
+\usepackage{geometry}
+
+% -----------------------------------------------------------------------------------
+%                   NAMES & CLASS DEFINITION %<<<<<<<<< INSERT DETAILS HERE
+% -----------------------------------------------------------------------------------
+\newcommand{\AssignmentTitle}{Assignment Title Goes Here}
+\newcommand{\ModuleTitle}{Title of Module Goes Here}
+\newcommand{\University}{University of Bristol}
+\newcommand{\Faculty}{Faculty of Engineering}
+\newcommand{\UniCrest}{crestbris.png}
+\newcommand{\UniLogo}{logobris.png}%<<<<<<<<< Make Sure Files are in the Template
+%\newcommand{\GroupName}{Group 2}
+\newcommand{\StudentNameA}{Alex Charles}
+\newcommand{\StudentNumberA}{1301866}
+\newcommand{\SupervisorNameA}{Supervisor}
+\newcommand{\SupervisorEmailA}{supervisor@bristol.ac.uk}
+
+
+% -----------------------------------------------------------------------------------
+%                   WORD COUTNER - for XeLaTex
+% -----------------------------------------------------------------------------------
+\usepackage{xesearch}
+\newcounter{words}
+\newenvironment{counted}{%
+  \setcounter{words}{0}
+  \SearchList!{wordcount}{\stepcounter{words}}
+    {a?,b?,c?,d?,e?,f?,g?,h?,i?,j?,k?,l?,m?,
+    n?,o?,p?,q?,r?,s?,t?,u?,v?,w?,x?,y?,z?}
+  \UndoBoundary{'}
+  \SearchOrder{p;}}{%
+  \StopSearching}
+
+
+% -----------------------------------------------------------------------------------
+%                   MARGINS, HEADERS & FOOTERS
+% -----------------------------------------------------------------------------------
+ \geometry{
+ left=20mm,
+ right=20mm,
+ top=25mm,
+ bottom=25mm,
+ }
+\linespread{1.05}
+
+\pagestyle{fancy}
+\lhead{\includegraphics[width = 0.2\textwidth]{\UniLogo}}
+\chead{\ModuleTitle}
+% \rhead{}
+\lfoot{\StudentNameA}
+\cfoot{}
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% -----------------------------------------------------------------------------------
+%               DOCUMENT STRUCTURE COMMANDS
+% -----------------------------------------------------------------------------------
+% To sort out the formatting of header and footer when a page...
+% ... split occurs "within" a problem environment.
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1 (Cont.)}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+% To sort out the formatting of header and footer when a page...
+% ... split occur "between" problem environments.
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (Cont.)}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+% -----------------------------------------------------------------------------------
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+                                  %	TITLE PAGE FORMAT
+%----------------------------------------------------------------------------------------
+\begin{titlepage}
+
+	\center % Center everything on the page
+%----------------------------------------------------------------------------------------
+%	HEADING SECTION
+%----------------------------------------------------------------------------------------
+		\usefont{OT1}{bch}{b}{n}
+		\normalfont \normalsize \textsc{\University} \\ [10pt]
+		\normalfont \normalsize \textsc{\Faculty} \\ [25pt]
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION - Adds Univeristy Crest to the Report
+%----------------------------------------------------------------------------------------
+		\includegraphics[width = 0.2\textwidth]{\UniCrest}\\[0.5cm]
+%----------------------------------------------------------------------------------------
+%	HEADING SECTION
+%----------------------------------------------------------------------------------------
+		\normalfont \normalsize \textsc{\ModuleTitle} \\ [25pt]
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+		\horrule{0.5pt} \\[0.4cm]
+		\huge \textbf{\AssignmentTitle} \\
+		\horrule{2pt} \\[0.5cm]
+%----------------------------------------------------------------------------------------
+%	HEADING SECTION
+%----------------------------------------------------------------------------------------
+%		\normalfont \normalsize \textsc{\GroupName} \\ [25pt]
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Supervisors:}\\
+% Change Name
+\textbf{\SupervisorNameA}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Email:} \\
+\SupervisorEmailA
+
+\end{flushright}
+\end{minipage}\\[1cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Names:}\\
+	\textbf{\StudentNameA}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Candidate Number:} \\
+(\StudentNumberA)\\
+\end{flushright}
+\end{minipage}\\[2cm]
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+\textit{{\large \today}}\\[1cm] % Date, change the \today to a set date if you want to be precise
+%----------------------------------------------------------------------------------------
+\vfill % Fill the rest of the page with whitespace
+\end{titlepage}
+
+
+\newpage
+
+% -----------------------------------------------------------------------------------
+%                             	 ABSTRACT
+% -----------------------------------------------------------------------------------
+\begin{abstract}
+\end{abstract}
+% -----------------------------------------------------------------------------------
+%                              TABLE OF CONTENTS
+% -----------------------------------------------------------------------------------
+\tableofcontents
+\newpage
+%% -----------------------------------------------------------------------------------
+%%                          	  INTRODUCTION
+%% -----------------------------------------------------------------------------------
+\begin{counted} %<<<<<<<<<<<<<<STARTS WORD COUNTER

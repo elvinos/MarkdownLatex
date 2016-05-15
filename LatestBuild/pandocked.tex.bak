@@ -1,0 +1,322 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{longtable,booktabs}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+\begin{document}
+
+\section{Welcome to Marxico}\label{welcome-to-marxico}
+
+\textbf{Marxico} is a delicate Markdown editor for Evernote. With
+reliable storage and sync powered by Evernote, \textbf{Marxico} offers
+greate writing experience.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Versatile} - supporting code highlight, \emph{LaTeX} \& flow
+  charts, inserting images \& attachments by all means.
+\item
+  \textbf{Exquisite} - neat but powerful editor, featuring offline docs,
+  live preview, and offering the {[}desktop client{]}{[}1{]} and offline
+  {[}Chrome App{]}{[}2{]}.
+\item
+  \textbf{Sophisticated} - deeply integrated with Evernote, supporting
+  notebook \& tags, two-way bind editing.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsection{Introducing Markdown}\label{introducing-markdown}
+
+\begin{quote}
+Markdown is a plain text formatting syntax designed to be converted to
+HTML. Markdown is popularly used as format for readme files, \ldots{} or
+in text editors for the quick creation of rich text documents. -
+\href{http://en.wikipedia.org/wiki/Markdown}{Wikipedia}
+\end{quote}
+
+As showed in this manual, it uses hash(\#) to identify headings,
+emphasizes some text to be \textbf{bold} or \emph{italic}. You can
+insert a \href{http://www.example.com}{link} , or a
+footnote{[}\^{}demo{]}. Serveral advanced syntax are listed below,
+please press \texttt{Cmd\ +\ /} to view Markdown cheatsheet.
+
+\subsubsection{Code block}\label{code-block}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@requires_authorization}
+\KeywordTok{def} \NormalTok{somefunc(param1}\OperatorTok{=}\StringTok{''}\NormalTok{, param2}\OperatorTok{=}\DecValTok{0}\NormalTok{):}
+    \CommentTok{'''A docstring'''}
+    \ControlFlowTok{if} \NormalTok{param1 }\OperatorTok{>} \NormalTok{param2: }\CommentTok{# interesting}
+        \BuiltInTok{print} \StringTok{'Greater'}
+    \ControlFlowTok{return} \NormalTok{(param2 }\OperatorTok{-} \NormalTok{param1 }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{or} \VariableTok{None}
+\KeywordTok{class} \NormalTok{SomeClass:}
+    \ControlFlowTok{pass}
+\OperatorTok{>>>} \NormalTok{message }\OperatorTok{=} \StringTok{'''interpreter}
+\StringTok{... prompt'''}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{LaTeX expression}\label{latex-expression}
+
+\[  x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+
+\subsubsection{Table}\label{table}
+
+\begin{longtable}[c]{@{}lrc@{}}
+\toprule
+Item & Value & Qty\tabularnewline
+\midrule
+\endhead
+Computer & 1600 USD & 5\tabularnewline
+Phone & 12 USD & 12\tabularnewline
+Pipe & 1 USD & 234\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Diagrams}\label{diagrams}
+
+\paragraph{Flow charts}\label{flow-charts}
+
+\begin{verbatim}
+st=>start: Start
+e=>end
+op=>operation: My Operation
+cond=>condition: Yes or No?
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+\end{verbatim}
+
+\paragraph{Sequence diagrams}\label{sequence-diagrams}
+
+\begin{verbatim}
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+\end{verbatim}
+
+\begin{quote}
+\textbf{Note:} You can find more information:
+\end{quote}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  about \textbf{Sequence diagrams} syntax {[}here{]}{[}3{]},
+\item
+  about \textbf{Flow charts} syntax {[}here{]}{[}4{]}.
+\end{itemize}
+\end{quote}
+
+\subsubsection{Checkbox}\label{checkbox}
+
+You can use \texttt{-\ {[}\ {]}} and \texttt{-\ {[}x{]}} to create
+checkboxes, for example:
+
+\begin{itemize}
+\tightlist
+\item
+  {[}x{]} Item1
+\item
+  {[} {]} Item2
+\item
+  {[} {]} Item3
+\end{itemize}
+
+\begin{quote}
+\textbf{Note:} Currently it is only partially supported. You can't
+toggle checkboxes in Evernote. You can only modify the Markdown in
+Marxico to do that. Next version will fix this.
+\end{quote}
+
+\subsubsection{Dancing with Evernote}\label{dancing-with-evernote}
+
+\paragraph{Notebook \& Tags}\label{notebook-tags}
+
+\textbf{Marxico} add
+\texttt{@(Notebook){[}tag1\textbar{}tag2\textbar{}tag3{]}} syntax to
+select notebook and set tags for the note. After typing \texttt{@(}, the
+notebook list would appear, please select one from it.
+
+\paragraph{Title}\label{title}
+
+\textbf{Marxico} would adopt the first heading encountered as the note
+title. For example, in this manual the first line
+\texttt{Welcome\ to\ Marxico} is the title.
+
+\paragraph{Quick Editing}\label{quick-editing}
+
+Note saved by \textbf{Marxico} in Evernote would have a red ribbon
+button on the top-right corner. Click it and it would bring you back to
+\textbf{Marxico} to edit the note.
+
+\begin{quote}
+\textbf{Note:} Currently \textbf{Marxico} is unable to detect and merge
+any modifications in Evernote by user. Please go back to
+\textbf{Marxico} to edit.
+\end{quote}
+
+\paragraph{Data Synchronization}\label{data-synchronization}
+
+While saving rich HTML content in Evernote, \textbf{Marxico} puts the
+Markdown text in a hidden area of the note, which makes it possible to
+get the original text in \textbf{Marxico} and edit it again. This is a
+really brilliant design because:
+
+\begin{itemize}
+\tightlist
+\item
+  it is beyond just one-way exporting HTML which other services do;
+\item
+  and it avoids privacy and security problems caused by storing content
+  in a intermediate server.
+\end{itemize}
+
+\begin{quote}
+\textbf{Privacy Statement: All of your notes data are saved in Evernote.
+Marxico doesn't save any of them.}
+\end{quote}
+
+\paragraph{Offline Storage}\label{offline-storage}
+
+\textbf{Marxico} stores your unsynchronized content locally in browser
+storage, so no worries about network and broswer crash. It also keeps
+the recent file list you've edited in
+\texttt{Document\ Management(Cmd\ +\ O)}.
+
+\begin{quote}
+\textbf{Note:} Opthough browser storage is reliable in the most time,
+Evernote is born to do that. So please sync the document regularly while
+writing.
+\end{quote}
+
+\subsection{Shortcuts}\label{shortcuts}
+
+Help \texttt{Cmd\ +\ /} Sync Doc \texttt{Cmd\ +\ S} Create Doc
+\texttt{Cmd\ +\ Opt\ +\ N} Maximize Editor \texttt{Cmd\ +\ Enter}
+Preview Doc \texttt{Cmd\ +\ Opt\ +\ Enter} Doc Management
+\texttt{Cmd\ +\ O} Menu \texttt{Cmd\ +\ M}
+
+Bold \texttt{Cmd\ +\ B} Insert Image \texttt{Cmd\ +\ G} Insert Link
+\texttt{Cmd\ +\ L} Convert Heading \texttt{Cmd\ +\ H}
+
+\subsection{About Pro}\label{about-pro}
+
+\textbf{Marixo} offers a free trial of 10 days. After that, you need to
+\href{http://marxi.co/purchase.html}{purchase} the Pro service.
+Otherwise, you would not be able to sync new notes. Previous notes can
+be edited and synced all the time.
+
+\subsection{Credits}\label{credits}
+
+\textbf{Marxico} was first built upon {[}Dillinger{]}{[}5{]}, and the
+newest version is almost based on the awesome {[}StackEdit{]}{[}6{]}.
+Acknowledgments to them and other incredible open source projects!
+
+\subsection{Feedback \& Bug Report}\label{feedback-bug-report}
+
+\begin{itemize}
+\tightlist
+\item
+  Twitter: {[}@gock2{]}{[}7{]}
+\item
+  Email:
+  \href{mailto:hustgock@gmail.com}{\nolinkurl{hustgock@gmail.com}}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Thank you for reading this manual. Now please press \texttt{Cmd\ +\ M}
+and click \texttt{Link\ with\ Evernote}. Enjoy your \textbf{Marxico}
+journey!
+
+\end{document}
