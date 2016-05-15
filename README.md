@@ -19,7 +19,20 @@ Clone the git hub repository and check that the file structure is as follows:
 
 > ~/Documents/LaTex/MarkdownLatex/
 
-Otherwise edit the scrpit.sh folders to match location on you local disk.
+Otherwise edit the script.sh folders to match location on you local disk.
+
+Add your markdown sections to:
+> ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections
+
+Change the line 11 in the script.sh file and add all the section files e.g :
+
+```
+# Gather the files which together constitute a dissertation into one place. Add Section Files Here
+cat ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections/markdown.md > sectionbuild.md
+
+# Change to:
+cat ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections/section1.md section2.md > sectionbuild.md
+```
 
 Using the terminal type:
 
@@ -28,6 +41,8 @@ cd /Documents/LaTex/MarkdownLatex/
 ./script.sh
 ```
 This moves to your MarkdownLatex Folder and the exectutes the script file which builds the latex document.
+
+
 
 ## LaTeX Build
 The script currently will complie the entire projct into a single PDF.
