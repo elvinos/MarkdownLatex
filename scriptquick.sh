@@ -47,3 +47,5 @@ tar cfvz ~/Documents/LaTex/MarkdownLatex/LatestBuild/latest.tar.gz sectionbuild.
 
 # Rename the archived version, including the date generated.
 mv ~/Documents/LaTex/MarkdownLatex/LatestBuild/latest.tar.gz ~/Documents/LaTex/MarkdownLatex/Archive/rep_bu_$date.tar.gz
+
+killall Terminal
