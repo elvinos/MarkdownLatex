@@ -7,7 +7,7 @@ date=`date +"%m-%d-%y-%H%M"`
 cd ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections
 
 # Gather the files which together constitute a dissertation into one place. Add Section Files Here
-cat ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections/markdown.md > sectionbuild.md
+cat ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections/Introduction.md Background.md Interviews.md MTCStrategy.md CompPosModel.md MarketingDevelop.md appendix.md > sectionbuild.md
 
 # Copy into the build folder
 cp  sectionbuild.md ~/Documents/LaTex/MarkdownLatex/LatestBuild/sectionbuild.md
@@ -34,10 +34,6 @@ cat ~/Documents/LaTex/MarkdownLatex/LatestBuild/header.tex ~/Documents/LaTex/Mar
 
 # Render the bibliography based on the prior file
 /Library/TeX/texbin/bibtex Report
-
-# Render the file twice more, to ensure that the bibliographical references are included and that the TOC reflects everything accurately
-/Library/TeX/texbin/xelatex -output-driver="/Library/TeX/texbin/xdvipdfmx" -synctex=1 Report
-/Library/TeX/texbin/xelatex -output-driver="/Library/TeX/texbin/xdvipdfmx" -synctex=1  Report
 
 # Copy the PDF and final TeX out of the build folder for accessibility
 cp Report.tex ~/Documents/LaTex/MarkdownLatex/LatestReport.tex

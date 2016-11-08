@@ -13,7 +13,7 @@
 \usepackage{sectsty}
 \usepackage[english]{babel}
 \usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
+\usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -42,9 +42,55 @@
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage{cite}
 \usepackage{geometry}
+\usepackage{booktabs} %<<<<<<<<< Table drawing package
+\usepackage[table,xcdraw]{xcolor} %<<<<<<<<< Table drawing package
+\usepackage{svg}
+\usepackage{hyperref} % Creates Hyperlinks for references
+\usepackage{changepage} %Allows Adjust width to be used for the document (indenting paragraphs)
+\usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
+
+\newenvironment{indentpara}{\begin{adjustwidth}{2cm}{}}{\end{adjustwidth}} %Declare adjust width wiht indentpara
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\diamond$}
+\renewcommand{\labelitemiii}{$\cdot$}
 
 % -----------------------------------------------------------------------------------
-%                 PACKAGES FOR MARKDOWN CONVERSION
+%                 Quotes
+% -----------------------------------------------------------------------------------
+
+\usepackage{epigraph}
+
+% \epigraphsize{\small}% Default
+\setlength\epigraphwidth{12cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{}%%%% > Removes Url bibliography warnings
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
+%%%% > For Quotes Use \epigraph{"Quote"}{ - \textup{Author}, Book}
+
+% -----------------------------------------------------------------------------------
+%                   NAMES & CLASS DEFINITION %<<<<<<<<< INSERT DETAILS HERE
+% -----------------------------------------------------------------------------------
+\newcommand{\AssignmentTitle}{Understanding Competitive Positioning Within the MTC and its use to Develop a Marketing Strategy}
+\newcommand{\ModuleTitle}{Industrial Critique Report}
+\newcommand{\University}{University of Bristol}
+\newcommand{\Faculty}{Faculty of Engineering}
+\newcommand{\UniCrest}{crestbris.png}
+\newcommand{\UniLogo}{logobris.png}%<<<<<<<<< Make Sure Files are in the Template
+%\newcommand{\GroupName}{Group 2}
+\newcommand{\StudentNameA}{Alex Charles}
+\newcommand{\StudentNumberA}{1301866}
+\newcommand{\SupervisorNameA}{Name
+\newcommand{\SupervisorEmailA}{email@gmail.com}
+\newcommand{\SupervisorNameB}{Name}
+\newcommand{\SupervisorEmailB}{email@gmail.com}
+
+% -----------------------------------------------------------------------------------
+%        PACKAGES FOR MARKDOWN CONVERSION - FOR USE If Using Markdown to Latex
 % -----------------------------------------------------------------------------------
 
 \usepackage{fixltx2e} % provides \textsubscript
@@ -57,8 +103,8 @@
 }{}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Pandoc User's Guide},
-            pdfauthor={John MacFarlane},
+            pdftitle={\AssignmentTitle},
+            pdfauthor={\StudentNameA},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -74,7 +120,7 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
+% \setcounter{secnumdepth}{0}
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
 \let\oldparagraph\paragraph
@@ -84,22 +130,6 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-
-% -----------------------------------------------------------------------------------
-%                   NAMES & CLASS DEFINITION %<<<<<<<<< INSERT DETAILS HERE
-% -----------------------------------------------------------------------------------
-\newcommand{\AssignmentTitle}{Assignment Title Goes Here}
-\newcommand{\ModuleTitle}{Title of Module Goes Here}
-\newcommand{\University}{University of Bristol}
-\newcommand{\Faculty}{Faculty of Engineering}
-\newcommand{\UniCrest}{crestbris.png}
-\newcommand{\UniLogo}{logobris.png}%<<<<<<<<< Make Sure Files are in the Template
-%\newcommand{\GroupName}{Group 2}
-\newcommand{\StudentNameA}{Alex Charles}
-\newcommand{\StudentNumberA}{1301866}
-\newcommand{\SupervisorNameA}{Supervisor}
-\newcommand{\SupervisorEmailA}{supervisor@bristol.ac.uk}
-
 
 % -----------------------------------------------------------------------------------
 %                   WORD COUTNER - for XeLaTex
@@ -115,25 +145,23 @@
   \SearchOrder{p;}}{%
   \StopSearching}
 
-
 % -----------------------------------------------------------------------------------
 %                   MARGINS, HEADERS & FOOTERS
 % -----------------------------------------------------------------------------------
  \geometry{
- left=20mm,
+ left=25mm,
  right=20mm,
  top=25mm,
  bottom=25mm,
  }
-\linespread{1.05}
-
+\linespread{1.5}
 \pagestyle{fancy}
 \lhead{\includegraphics[width = 0.2\textwidth]{\UniLogo}}
-\chead{\ModuleTitle}
+% \chead{\ModuleTitle}
 % \rhead{}
 \lfoot{\StudentNameA}
 \cfoot{}
-\rfoot{Page \thepage\ of \pageref{LastPage}}
+\rfoot{Page \thepage} %%%% note the footer is swapped when page numbering style changes
 \renewcommand\headrulewidth{0.4pt}
 \renewcommand\footrulewidth{0.4pt}
 
@@ -163,6 +191,7 @@
 %----------------------------------------------------------------------------------------
                                   %	TITLE PAGE FORMAT
 %----------------------------------------------------------------------------------------
+\pagenumbering{roman}
 \begin{titlepage}
 
 	\center % Center everything on the page
@@ -197,21 +226,23 @@
 \begin{flushleft} \large
 \emph{Supervisors:}\\
 % Change Name
-\textbf{\SupervisorNameA}
+\textbf{\SupervisorNameA}\\
+\textbf{\SupervisorNameB}
 \end{flushleft}
 \end{minipage}
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Email:} \\
-\SupervisorEmailA
+\SupervisorEmailA\\
+\SupervisorEmailB
 
 \end{flushright}
 \end{minipage}\\[1cm]
 
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
-\emph{Names:}\\
+\emph{Author:}\\
 	\textbf{\StudentNameA}
 \end{flushleft}
 \end{minipage}
@@ -231,20 +262,51 @@
 \vfill % Fill the rest of the page with whitespace
 \end{titlepage}
 
+% \setcounter{page}{3}
 
 \newpage
+
 
 % -----------------------------------------------------------------------------------
 %                             	 ABSTRACT
 % -----------------------------------------------------------------------------------
+
+\addcontentsline{toc}{section}{Abstract}
 \begin{abstract}
+
 \end{abstract}
 % -----------------------------------------------------------------------------------
 %                              TABLE OF CONTENTS
 % -----------------------------------------------------------------------------------
+
 \tableofcontents
+
 \newpage
+
+\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+\addcontentsline{toc}{section}{List of Acronyms}
+\section*{List of Acronyms}\label{acronyms}
+% \textbf{BRB}: Be Right Back \\
+
+
+\newpage
+
+% \addcontentsline{toc}{section}{Acknowledgements}
+% \section*{Acknowledgements}\label{acknowledgements}
+
+% \addcontentsline{toc}{section}{Declaration}
+% \section*{Declaration}\label{declartion}
+% I hereby declare that this report entitled “\AssignmentTitle” submitted to Bristol University, is a record of an original work completed by myself.\\
+
+\newpage
+
 %% -----------------------------------------------------------------------------------
 %%                          	  INTRODUCTION
 %% -----------------------------------------------------------------------------------
+\clearpage
+\rfoot{Page \thepage\ of \pageref{LastPage}}
+\pagenumbering{arabic}
 \begin{counted} %<<<<<<<<<<<<<<STARTS WORD COUNTER
