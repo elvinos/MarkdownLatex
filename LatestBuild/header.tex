@@ -10,8 +10,19 @@
 %      PACKAGES & OTHER DOCUMENT CONFIGURATIONS
 % -----------------------------------------------------------------------------------
 \documentclass{article}
-\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+% ----------NEW BIBLATEX BIBLIOGRAPHY-----------------------------------------------
+\usepackage[backend=bibtex,style = ieee]{biblatex} % Upgrades Bibliography
+
+\addbibresource{BibFile.bib} %%% For biblatex
+%e.g to add page number \footfullcite[chapter, p.~215]{AAIB}
+% This allows can use footfullcite commands
+% Note urldate field must be in yyyy-mm-dd to work - use online type
+% Remeber to use \printbibliography in the footer
+% -----------------------------------------------------------------------------------
+\usepackage{sectsty}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -39,18 +50,18 @@
 \usepackage{subfig}
 \usepackage{wrapfig}
 \usepackage[font ={small,it}]{caption}
-\usepackage{amsmath,amsfonts,amsthm} % Math packages
-\usepackage{cite}
+\usepackage{amsfonts,amsthm} % Math packages
+% \usepackage{cite}
+\usepackage [autostyle, english = british]{csquotes} %corrects quote marks
+\MakeOuterQuote{"}
 \usepackage{geometry}
 \usepackage{booktabs} %<<<<<<<<< Table drawing package
 \usepackage[table,xcdraw]{xcolor} %<<<<<<<<< Table drawing package
 \usepackage{svg}
-\usepackage{hyperref} % Creates Hyperlinks for references
-\usepackage{url}
+\usepackage[colorlinks, linkcolor = black, citecolor = black, filecolor = black, urlcolor = blue]{hyperref} % Creates Hyperlinks for references - add [colorlinks] for coloured hyperlinks
 \usepackage{changepage} %Allows Adjust width to be used for the document (indenting paragraphs)
 \usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
-\usepackage{lscape} %Change Pages from Portrait to Landscape
-
+\usepackage{pdflscape} %Change Pages from Portrait to Landscape
 \newenvironment{indentpara}{\begin{adjustwidth}{2cm}{}}{\end{adjustwidth}} %Declare adjust width wiht indentpara
 \renewcommand{\labelitemii}{$\circ$}
 \renewcommand{\labelitemiii}{$\diamond$}
@@ -61,7 +72,6 @@
 % -----------------------------------------------------------------------------------
 
 \usepackage{epigraph}
-
 % \epigraphsize{\small}% Default
 \setlength\epigraphwidth{12cm}
 \setlength\epigraphrule{0pt}
@@ -85,7 +95,7 @@
 \newcommand{\UniLogo}{logobris.png}%<<<<<<<<< Make Sure Files are in the Template
 %\newcommand{\GroupName}{Group 2}
 \newcommand{\StudentNameA}{Alex Charles}
-\newcommand{\StudentNumberA}{1301866}
+\newcommand{\StudentNumberA}{67634}
 \newcommand{\SupervisorNameA}{Name}
 \newcommand{\SupervisorEmailA}{email@gmail.com}
 \newcommand{\SupervisorNameB}{Name}
@@ -94,7 +104,6 @@
 % -----------------------------------------------------------------------------------
 %        PACKAGES FOR MARKDOWN CONVERSION - FOR USE If Using Markdown to Latex
 % -----------------------------------------------------------------------------------
-
 \usepackage{fixltx2e} % provides \textsubscript
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -103,7 +112,6 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={\AssignmentTitle},
             pdfauthor={\StudentNameA},
@@ -151,15 +159,16 @@
 %                   MARGINS, HEADERS & FOOTERS
 % -----------------------------------------------------------------------------------
  \geometry{
- left=25mm,
+ left=20mm,
  right=20mm,
  top=25mm,
  bottom=25mm,
  }
-\linespread{1.5}
+\linespread{1.05}
+
 \pagestyle{fancy}
 \lhead{\includegraphics[width = 0.2\textwidth]{\UniLogo}}
-% \chead{\ModuleTitle}
+% \chead{\AssignmentTitle}
 % \rhead{}
 \lfoot{\StudentNameA}
 \cfoot{}
@@ -189,6 +198,11 @@
 
 % -----------------------------------------------------------------------------------
 \begin{document}
+
+  \setlength{\abovedisplayskip}{-18pt}
+  \setlength{\belowdisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{-18pt}
+  \setlength{\belowdisplayshortskip}{0pt}
 
 %----------------------------------------------------------------------------------------
                                   %	TITLE PAGE FORMAT
@@ -229,7 +243,7 @@
 \emph{Supervisors:}\\
 % Change Name
 \textbf{\SupervisorNameA}\\
-\textbf{\SupervisorNameB}
+% \textbf{\SupervisorNameB}
 \end{flushleft}
 \end{minipage}
 ~
@@ -237,7 +251,7 @@
 \begin{flushright} \large
 \emph{Email:} \\
 \SupervisorEmailA\\
-\SupervisorEmailB
+% \SupervisorEmailB
 
 \end{flushright}
 \end{minipage}\\[1cm]
@@ -283,18 +297,19 @@
 
 \tableofcontents
 
-\newpage
+
+% \newpage
 
 \addcontentsline{toc}{section}{List of Tables}
 \listoftables
 \addcontentsline{toc}{section}{List of Figures}
 \listoffigures
-\addcontentsline{toc}{section}{List of Acronyms}
-\section*{List of Acronyms}\label{acronyms}
+% \addcontentsline{toc}{section}{List of Acronyms}
+% \section*{List of Acronyms}\label{acronyms}
 % \textbf{BRB}: Be Right Back \\
 
 
-\newpage
+% \newpage
 
 % \addcontentsline{toc}{section}{Acknowledgements}
 % \section*{Acknowledgements}\label{acknowledgements}
@@ -303,7 +318,7 @@
 % \section*{Declaration}\label{declartion}
 % I hereby declare that this report entitled “\AssignmentTitle” submitted to Bristol University, is a record of an original work completed by myself.\\
 
-\newpage
+% \newpage
 
 %% -----------------------------------------------------------------------------------
 %%                          	  INTRODUCTION

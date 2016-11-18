@@ -12,8 +12,12 @@ Above were \thewords\ words. %<<<<<<<<<<<<<<DISPLAYS WORD COUNTER
 % -----------------------------------------------------------------------------------
 \newpage
 
-\bibliographystyle{plain}
-\bibliography{BibFile}
-\nocite{*}
+% ---------------BIBTEX OLD-----------------------------------------------------
+% \bibliographystyle{unsrt} %%%% Plain or alpha can change orders here
+% \bibliography{BibFile}
+\nocite{*} %%%if you want to see all references even those note cited in the text
+% -----------------------------------------------------------------------------------
+
+\printbibliography
 
 \end{document}
