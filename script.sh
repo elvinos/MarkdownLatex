@@ -6,7 +6,7 @@ date=`date +"%m-%d-%y-%H%M"`
 # Move into the Sections folder
 cd ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections
 
-# Gather the files which together constitute a dissertation into one place. Add Section Files Here
+# Gather the files which together constitute a dissertation into one place. Add Section Files Here/ Aims.md Background.md Content.md > sectionbuild.md
 cat ~/Documents/LaTex/MarkdownLatex/LatestBuild/ReportSections/markdown.md > sectionbuild.md
 
 # Copy into the build folder
