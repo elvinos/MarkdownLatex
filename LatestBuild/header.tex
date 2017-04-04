@@ -14,7 +14,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[british]{babel}
 % ----------NEW BIBLATEX BIBLIOGRAPHY-----------------------------------------------
-\usepackage[backend=bibtex,style = ieee]{biblatex} % Upgrades Bibliography
+\usepackage[eprint=false,backend=bibtex,style = ieee]{biblatex} % Upgrades Bibliography Block Ragged helps break lines in url fixes error
 
 \addbibresource{BibFile.bib} %%% For biblatex
 %e.g to add page number \footfullcite[chapter, p.~215]{AAIB}
@@ -22,8 +22,15 @@
 % Note urldate field must be in yyyy-mm-dd to work - use online type
 % Remeber to use \printbibliography in the footer
 % -----------------------------------------------------------------------------------
-\usepackage{sectsty}
+% \usepackage{sectsty}
+\usepackage{url}
+
+%%% --- The following two lines are what needs to be added --- %%%
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
 \usepackage{amssymb,amsmath}
+% \numberwithin{figure}{section} %%%%% <<<<<< Puts Figure Numbering into Sections
 \usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -40,6 +47,7 @@
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 \usepackage[fit]{truncate} %Truncates headers that are too long
+\usepackage[headheight=26pt,headsep=0.15cm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{extramarks}
@@ -53,11 +61,11 @@
 \usepackage[font ={small,it}]{caption}
 \usepackage{amsfonts,amsthm} % Math packages
 % \usepackage{cite}
-% \usepackage[maxlevel=3]{csquotes}
+\usepackage{csquotes}
 %    \MakeAutoQuote{‘}{’}
 %    \MakeAutoQuote*{“}{”} %corrects quote marks
-
-\usepackage{geometry}
+\usepackage{enumitem} % resume numbered lists
+\usepackage{multicol} %for mulitple colums in lists
 \usepackage{booktabs} %<<<<<<<<< Table drawing package
 \usepackage[table,xcdraw]{xcolor} %<<<<<<<<< Table drawing package
 \usepackage{svg}
@@ -66,6 +74,19 @@
 \usepackage{changepage} %Allows Adjust width to be used for the document (indenting paragraphs)
 \usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
 \usepackage{pdflscape} %Change Pages from Portrait to Landscape
+\usepackage{color,soul} %% Highlights text for markup
+% \usepackage[compact]{titlesec}
+
+\usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
+%%%%%%%For Condensed Report Format%%%%%%%%%%%%%%
+% \usepackage{titlesec}
+% \titlespacing\section{0pt}{6pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+% \titlespacing\subsection{0pt}{0pt plus 3pt minus 2pt}{-3pt plus 2pt minus 2pt}
+% \titlespacing\subsubsection{0pt}{0pt plus 2pt minus 2pt}{-6pt plus 2pt minus 2pt}
+% \titlespacing\subsubsubsection{0pt}{-6pt plus 2pt minus 2pt}{-6pt plus 2pt minus 2pt}
+% \setlength{\multicolsep}{-1pt plus 2.0pt minus 1.5pt}% 50% of original values
+
+% \titlespacing*{\section}{0pt}{1.1\baselineskip}{\baselineskip}
 
 \renewcommand*{\thefootnote}{\alph{footnote}} %%% Changes footnotes to letters
 \usepackage[bottom]{footmisc} %%% Pushes footnote to bottom and to the margin
