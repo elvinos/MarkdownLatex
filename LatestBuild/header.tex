@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                                      %
-%         Bristol Project LaTex Template            %
+%         Univesity College London Project LaTex Template            %
 %                                                                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -9,7 +9,8 @@
 % -----------------------------------------------------------------------------------
 %      PACKAGES & OTHER DOCUMENT CONFIGURATIONS
 % -----------------------------------------------------------------------------------
-\documentclass{article}
+\documentclass[fontsize=10pt]{extarticle}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[british]{babel}
@@ -30,7 +31,7 @@
 \setcounter{biburlucpenalty}{8000}
 
 \usepackage{amssymb,amsmath}
-% \numberwithin{figure}{section} %%%%% <<<<<< Puts Figure Numbering into Sections
+\numberwithin{figure}{section} %%%%% <<<<<< Puts Figure Numbering into Sections
 \usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -38,11 +39,13 @@
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
-    \setmainfont{Avenir-Light}
+    \setmainfont[
+ BoldFont={AvenirNext-Medium},ItalicFont={AvenirNext-Italic},
+ BoldItalicFont={AvenirNext-MediumItalic}]{AvenirNext-Regular}
   \else
   % Font Package for XeLatex
     \usepackage{fontspec}
-    \setmainfont{Avenir-Light}
+    \setmainfont{AvenirNext-Regular}
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
@@ -79,12 +82,12 @@
 
 \usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
 %%%%%%%For Condensed Report Format%%%%%%%%%%%%%%
-% \usepackage{titlesec}
-% \titlespacing\section{0pt}{6pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-% \titlespacing\subsection{0pt}{0pt plus 3pt minus 2pt}{-3pt plus 2pt minus 2pt}
-% \titlespacing\subsubsection{0pt}{0pt plus 2pt minus 2pt}{-6pt plus 2pt minus 2pt}
-% \titlespacing\subsubsubsection{0pt}{-6pt plus 2pt minus 2pt}{-6pt plus 2pt minus 2pt}
-% \setlength{\multicolsep}{-1pt plus 2.0pt minus 1.5pt}% 50% of original values
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{0pt plus 3pt minus 2pt}{-3pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{0pt plus 2pt minus 2pt}{-6pt plus 2pt minus 2pt}
+\titlespacing\subsubsubsection{0pt}{-6pt plus 2pt minus 2pt}{-6pt plus 2pt minus 2pt}
+\setlength{\multicolsep}{-1pt plus 2.0pt minus 1.5pt}% 50% of original values
 
 % \titlespacing*{\section}{0pt}{1.1\baselineskip}{\baselineskip}
 
@@ -164,10 +167,10 @@
 % -----------------------------------------------------------------------------------
 \newcommand{\AssignmentTitle}{Report Title}
 \newcommand{\ModuleTitle}{Module Title}
-\newcommand{\University}{University of Bristol}
+\newcommand{\University}{Univesity College London}
 \newcommand{\Faculty}{Faculty of Engineering}
-\newcommand{\UniCrest}{crestbris.png}
-\newcommand{\UniLogo}{logobris.png}%<<<<<<<<< Make Sure Files are in the Template
+\newcommand{\UniCrest}{logoucl.png}
+\newcommand{\UniLogo}{logoucl.png}%<<<<<<<<< Make Sure Files are in the Template
 %\newcommand{\GroupName}{Group 2}
 \newcommand{\StudentNameA}{Alex Charles}
 \newcommand{\StudentNumberA}{67634}
@@ -234,15 +237,15 @@
 %                   MARGINS, HEADERS & FOOTERS
 % -----------------------------------------------------------------------------------
  \geometry{
- left=20mm,
- right=20mm,
- top=25mm,
- bottom=25mm,
+ left=25.4mm,
+ right=25.4mm,
+ top=25.4mm,
+ bottom=25.4mm,
  }
-\linespread{1.05}
+\linespread{1.5}
 
 \pagestyle{fancy}
-\lhead{\includegraphics[width = 0.2\textwidth]{\UniLogo}}
+\lhead{\includegraphics[width = 0.15\textwidth]{\UniLogo}}
 % \chead{\AssignmentTitle}
 % \rhead{}
 \lfoot{\StudentNameA}
@@ -252,7 +255,7 @@
 \renewcommand\footrulewidth{0.4pt}
 
 \setlength\parindent{0pt}
-
+ % \setlength{\headheight}{5mm}
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
 % -----------------------------------------------------------------------------------
@@ -274,10 +277,18 @@
 % -----------------------------------------------------------------------------------
 \begin{document}
 
+
+%For PDF intro
+% \includepdf[pages={-}]{DP4front.pdf}
+
   \setlength{\abovedisplayskip}{-18pt}
   \setlength{\belowdisplayskip}{0pt}
   \setlength{\abovedisplayshortskip}{-18pt}
   \setlength{\belowdisplayshortskip}{0pt}
+
+  \setlist[enumerate]{itemsep=-2mm}
+  \setlist[itemize]{itemsep=-2mm}
+
 
 %----------------------------------------------------------------------------------------
                                   %	TITLE PAGE FORMAT
@@ -295,7 +306,7 @@
 %----------------------------------------------------------------------------------------
 %	LOGO SECTION - Adds Univeristy Crest to the Report
 %----------------------------------------------------------------------------------------
-		\includegraphics[width = 0.2\textwidth]{\UniCrest}\\[0.5cm]
+		\includegraphics[width = 0.6\textwidth]{\UniCrest}\\[0.5cm]
 %----------------------------------------------------------------------------------------
 %	HEADING SECTION
 %----------------------------------------------------------------------------------------
@@ -383,15 +394,6 @@
 % \section*{List of Acronyms}\label{acronyms}
 % \textbf{BRB}: Be Right Back \\
 
-
-% \newpage
-
-% \addcontentsline{toc}{section}{Acknowledgements}
-% \section*{Acknowledgements}\label{acknowledgements}
-
-% \addcontentsline{toc}{section}{Declaration}
-% \section*{Declaration}\label{declartion}
-% I hereby declare that this report entitled “\AssignmentTitle” submitted to Bristol University, is a record of an original work completed by myself.\\
 
 % \newpage
 
