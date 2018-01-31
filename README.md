@@ -21,6 +21,8 @@ LaTeX (Optional)
 
 Text editor - Atom recommended! Go to http://flight-manual.atom.io/getting-started/sections/installing-atom/
 
+Copy and paste text into Grammarly (it recognises Markdown) to proof read
+
 To install open the terminal and type (if homebrew is installed)
 
 ```
@@ -75,7 +77,7 @@ cd /Documents/yourreportlocation/
 sudo chmod -R a+rwx run.sh
 sudo chmod -R a+rwx runquick.sh
 ```
-- Add a bibliography using a free tool like biBDesk to update the bibfile
+- Add a bibliography using a free tool like BibDesk to update the `BibFiile.bib`
 - Don't replace **LatestBuild/ReportSections** if cloned this will keep the structure for the files
 - When white spaces are in path names terminal can get funny. For every white space in the path name use a
   - e.g. cd ~/Documents/University/Year\ 4/Research\ and\ Communications/
@@ -87,23 +89,25 @@ Edit the header.tex file with your name and report details. In the * NAMES & CLA
 
 For tables of contents, Acknowledgments, abstract edit them in the header.tex file
 
-Other than that you wont need to use latex code! Isn't that what we all need.
+Other than that you wont need to use latex code
 
-This template uses the Avenir font which may need downloading (I have included a .ttc file in the folder, for mac double click to install), if you prefer another font type it into the header.tex file or remove this package completely for the standard and much loved latex font.
+This template uses the Avenir Next font which may need downloading (I have included a .ttc file in the folder, for mac double click to install), if you prefer another font type it into the header.tex file or remove this package completely for the standard and much loved latex font.
 
 ```
-\usepackage{ifxetex,ifluatex}
+\usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
-    \setmainfont{Avenir-Light}
+    \setmainfont[
+ BoldFont={AvenirNext-Medium},ItalicFont={AvenirNext-Italic},
+ BoldItalicFont={AvenirNext-MediumItalic}]{AvenirNext-Regular}
   \else
   % Font Package for XeLatex
     \usepackage{fontspec}
-    \setmainfont{Avenir-Light}
+    \setmainfont{AvenirNext-Regular}
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
@@ -111,6 +115,5 @@ This template uses the Avenir font which may need downloading (I have included a
 
 ## Further Work
 - Documentation on all the report template features
-- easy way to make sure script.sh file is targeted to the right location
 - references to places to learn latex
 - help with windows users

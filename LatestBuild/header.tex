@@ -9,7 +9,7 @@
 % -----------------------------------------------------------------------------------
 %      PACKAGES & OTHER DOCUMENT CONFIGURATIONS
 % -----------------------------------------------------------------------------------
-\documentclass[fontsize=10pt]{extarticle}
+\documentclass[fontsize=11pt]{extarticle}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -17,8 +17,9 @@
 % ----------NEW BIBLATEX BIBLIOGRAPHY-----------------------------------------------
 \usepackage[eprint=false,backend=bibtex,style = ieee]{biblatex} % Upgrades Bibliography Block Ragged helps break lines in url fixes error
 
-\addbibresource{BibFile.bib} %%% For biblatex
+\addbibresource{../BibFile.bib} %%% For biblatex
 %e.g to add page number \footfullcite[chapter, p.~215]{AAIB}
+% of \footnote{Footnote text goes here}
 % This allows can use footfullcite commands
 % Note urldate field must be in yyyy-mm-dd to work - use online type
 % Remeber to use \printbibliography in the footer
@@ -32,6 +33,7 @@
 
 \usepackage{amssymb,amsmath}
 \numberwithin{figure}{section} %%%%% <<<<<< Puts Figure Numbering into Sections
+\numberwithin{table}{section}%%%%% <<<<<< Puts Tables Numbering into Sections
 \usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -58,7 +60,7 @@
 \usepackage{lipsum}
 \usepackage{float}
 \usepackage{graphicx}
-\graphicspath{{TempImg/}{Img/}}%<<<<<<<<< Location of Template Images and Other Images, Add folders here
+\graphicspath{{../TempImg/}{../Img/}}%<<<<<<<<< Location of Template Images and Other Images, Add folders here
 \usepackage{subfig}
 \usepackage{wrapfig}
 \usepackage[font ={small,it}]{caption}
@@ -165,19 +167,23 @@
 % -----------------------------------------------------------------------------------
 %                   NAMES & CLASS DEFINITION %<<<<<<<<< INSERT DETAILS HERE
 % -----------------------------------------------------------------------------------
-\newcommand{\AssignmentTitle}{Report Title}
-\newcommand{\ModuleTitle}{Module Title}
-\newcommand{\University}{Univesity College London}
-\newcommand{\Faculty}{Faculty of Engineering}
+\newcommand{\AssignmentTitle}{AssignmentTitle}
+\newcommand{\ModuleTitle}{ModuleTitle}
+\newcommand{\DegreeTitle}{MSc Computer Science}
+\newcommand{\University}{University College London}
+\newcommand{\Faculty}{Faculty of Engineering Sciences}
 \newcommand{\UniCrest}{logoucl.png}
 \newcommand{\UniLogo}{logoucl.png}%<<<<<<<<< Make Sure Files are in the Template
-%\newcommand{\GroupName}{Group 2}
-\newcommand{\StudentNameA}{Alex Charles}
-\newcommand{\StudentNumberA}{67634}
-\newcommand{\SupervisorNameA}{Name}
-\newcommand{\SupervisorEmailA}{email@gmail.com}
-\newcommand{\SupervisorNameB}{Name}
-\newcommand{\SupervisorEmailB}{email@gmail.com}
+\newcommand{\GroupName}{group 3 - ixn website}
+\newcommand{\StudentNameA}{Author}
+\newcommand{\StudentNumberA}{author@ucl.ac.uk}
+\newcommand{\StudentNameC}{Author}
+\newcommand{\StudentNumberC}{author@ucl.ac.uk}
+\newcommand{\StudentNameB}{Author}
+\newcommand{\StudentNumberB}{author@ucl.ac.uk}
+\newcommand{\SupervisorNameA}{Supervisors}
+\newcommand{\SupervisorEmailA}{supervisor@ucl.ac.uk}
+
 
 % -----------------------------------------------------------------------------------
 %        PACKAGES FOR MARKDOWN CONVERSION - FOR USE If Using Markdown to Latex
@@ -222,16 +228,16 @@
 % -----------------------------------------------------------------------------------
 %                   WORD COUTNER - for XeLaTex
 % -----------------------------------------------------------------------------------
-\usepackage{xesearch}
-\newcounter{words}
-\newenvironment{counted}{%
-  \setcounter{words}{0}
-  \SearchList!{wordcount}{\stepcounter{words}}
-    {a?,b?,c?,d?,e?,f?,g?,h?,i?,j?,k?,l?,m?,
-    n?,o?,p?,q?,r?,s?,t?,u?,v?,w?,x?,y?,z?}
-  \UndoBoundary{'}
-  \SearchOrder{p;}}{%
-  \StopSearching}
+% \usepackage{xesearch}
+% \newcounter{words}
+% \newenvironment{counted}{%
+%   \setcounter{words}{0}
+%   \SearchList!{wordcount}{\stepcounter{words}}
+%     {a?,b?,c?,d?,e?,f?,g?,h?,i?,j?,k?,l?,m?,
+%     n?,o?,p?,q?,r?,s?,t?,u?,v?,w?,x?,y?,z?}
+%   \UndoBoundary{'}
+%   \SearchOrder{p;}}{%
+%   \StopSearching}
 
 % -----------------------------------------------------------------------------------
 %                   MARGINS, HEADERS & FOOTERS
@@ -248,7 +254,7 @@
 \lhead{\includegraphics[width = 0.15\textwidth]{\UniLogo}}
 % \chead{\AssignmentTitle}
 % \rhead{}
-\lfoot{\StudentNameA}
+\lfoot{\StudentNameA, \StudentNameB, \StudentNameC}
 \cfoot{}
 \rfoot{Page \thepage} %%%% note the footer is swapped when page numbering style changes
 \renewcommand\headrulewidth{0.4pt}
@@ -310,7 +316,8 @@
 %----------------------------------------------------------------------------------------
 %	HEADING SECTION
 %----------------------------------------------------------------------------------------
-		\normalfont \normalsize \textsc{\ModuleTitle} \\ [25pt]
+		\normalfont \normalsize \textsc{\ModuleTitle} \\ [10pt]
+    \normalfont \normalsize \textsc{\DegreeTitle} \\ [25pt]
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
@@ -320,47 +327,53 @@
 %----------------------------------------------------------------------------------------
 %	HEADING SECTION
 %----------------------------------------------------------------------------------------
-%		\normalfont \normalsize \textsc{\GroupName} \\ [25pt]
+\normalfont \normalsize \textsc{\GroupName} \\ [25pt]
 %----------------------------------------------------------------------------------------
 %	AUTHOR SECTION
 %----------------------------------------------------------------------------------------
 \begin{minipage}{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Supervisors:}\\
-% Change Name
-\textbf{\SupervisorNameA}\\
-% \textbf{\SupervisorNameB}
-\end{flushleft}
-\end{minipage}
-~
+  \begin{flushleft} \large
+  \emph{Supervisors:}\\
+  % Change Name
+  \textbf{\SupervisorNameA}\\
+  % \textbf{\SupervisorNameB}
+  \end{flushleft}
+\end{minipage}\qquad
 \begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
-\emph{Email:} \\
-\SupervisorEmailA\\
-% \SupervisorEmailB
-
-\end{flushright}
-\end{minipage}\\[1cm]
-
+  \begin{flushright} \large
+  \emph{Email:} \\
+  \SupervisorEmailA \\
+  % \SupervisorEmailB
+  \end{flushright}
+\end{minipage} \\[1cm]
 \begin{minipage}{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Author:}\\
-	\textbf{\StudentNameA}
-\end{flushleft}
-\end{minipage}
-~
+  \begin{flushleft} \large
+  \emph{Authors:} \\
+  	\textbf{\StudentNameA} \\
+    \textbf{\StudentNameB} \\
+    \textbf{\StudentNameC}
+  \end{flushleft}
+\end{minipage}\qquad
 \begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
-\emph{Candidate Number:} \\
-(\StudentNumberA)\\
-\end{flushright}
-\end{minipage}\\[2cm]
+  \begin{flushright} \large
+     \emph{Authors Email:} \\
+     (\StudentNumberA) \\
+    (\StudentNumberB) \\
+    (\StudentNumberC)
+    \end{flushright}
+\end{minipage}\\[0.6cm]
 
 %----------------------------------------------------------------------------------------
 %	DATE SECTION
 %----------------------------------------------------------------------------------------
-\textit{{\large \today}}\\[1cm] % Date, change the \today to a set date if you want to be precise
+\textit{{\large \today}}\\% Date, change the \today to a set date if you want to be precise
+
 %----------------------------------------------------------------------------------------
+%	Disclaimer
+%----------------------------------------------------------------------------------------
+{\footnotesize This report is submitted as part requirement for the MSc Computer Science degree at UCL. It is substantially the result of my own work except where explicitly indicated in the text. The report may be freely copied and distributed provided the source is explicitly acknowledged.}
+
+% ---------------------------------
 \vfill % Fill the rest of the page with whitespace
 \end{titlepage}
 
@@ -375,27 +388,36 @@
 
 \addcontentsline{toc}{section}{Abstract}
 \begin{abstract}
-
+  Abstract text
 \end{abstract}
+\newpage
+
+\addcontentsline{toc}{section}{Acknowledgements}
+\section*{Acknowledgements}\label{acknowledgements}
+Acknowledgments text
+\newpage
 % -----------------------------------------------------------------------------------
 %                              TABLE OF CONTENTS
 % -----------------------------------------------------------------------------------
 
 \tableofcontents
-
-
-% \newpage
+%
+%
+\newpage
 
 \addcontentsline{toc}{section}{List of Tables}
 \listoftables
 \addcontentsline{toc}{section}{List of Figures}
 \listoffigures
-% \addcontentsline{toc}{section}{List of Acronyms}
-% \section*{List of Acronyms}\label{acronyms}
-% \textbf{BRB}: Be Right Back \\
 
+\newpage
 
-% \newpage
+\addcontentsline{toc}{section}{List of Acronyms}
+\section*{List of Acronyms}\label{acronyms}
+\textbf{CS}: Computer Science \\
+\textbf{UCL}: Univeristy College London \\
+
+\newpage
 
 %% -----------------------------------------------------------------------------------
 %%                          	  INTRODUCTION
@@ -403,4 +425,4 @@
 \clearpage
 \rfoot{Page \thepage\ of \pageref{LastPage}}
 \pagenumbering{arabic}
-\begin{counted} %<<<<<<<<<<<<<<STARTS WORD COUNTER
+% \begin{counted} %<<<<<<<<<<<<<<STARTS WORD COUNTER

@@ -35,3 +35,17 @@
 *.xdy
 *.tdo
 *.pdf
+*.bak
+*.DS_Store
+!LatestBuild/Img/*.pdf
+
+LatestBuild/Report-blx.bib
+LatestBuild/latest.tar.gz
+LatestBuild/sectionbuild.md
+LatestBuild/ReportSections/sectionbuild.md
+LatestBuild/Report.tex
+LatestBuild/pandocked.tex
+
+LatestBuild/Aux/
+
+Archive
