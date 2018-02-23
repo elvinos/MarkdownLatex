@@ -46,6 +46,10 @@ LatestBuild/ReportSections/sectionbuild.md
 LatestBuild/Report.tex
 LatestBuild/pandocked.tex
 
-LatestBuild/Aux/
+LatestBuild/Aux/*
+
+
+!LatestBuild/Aux/README.md
+
 
 Archive
