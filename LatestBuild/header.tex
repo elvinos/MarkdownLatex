@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                                      %
-%         Univesity College London Project LaTex Template            %
+%         University College London Project LaTex Template            %
 %                                                                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -10,13 +10,37 @@
 %      PACKAGES & OTHER DOCUMENT CONFIGURATIONS
 % -----------------------------------------------------------------------------------
 \documentclass[fontsize=11pt]{extarticle}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage[british]{babel}
-% ----------NEW BIBLATEX BIBLIOGRAPHY-----------------------------------------------
-\usepackage[eprint=false,backend=bibtex,style = ieee]{biblatex} % Upgrades Bibliography Block Ragged helps break lines in url fixes error
+\usepackage{fontspec}
+\setmainfont{AvenirNext}[
+Path = ../Fonts/,
+Extension = .ttf,
+UprightFont = *-Regular,
+BoldFont = *-Medium ,
+ItalicFont = *-Italic ,
+BoldItalicFont = *-MediumItalic]
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 
+
+% \usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
+% \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+%   \usepackage[T1]{fontenc}
+%   \usepackage[utf8]{inputenc}
+% \else % if luatex or xelatex
+%   \ifxetex
+%     \usepackage{mathspec}
+%     \setmainfont[
+%  BoldFont={AvenirNext-Medium},ItalicFont={AvenirNext-Italic},
+%  BoldItalicFont={AvenirNext-MediumItalic}]{AvenirNext-Regular}
+%   \else
+%   % Font Package for XeLatex
+%     \usepackage{fontspec}
+%     \setmainfont{AvenirNext-Regular}
+%   \fi
+%   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+% \fi
+% ----------NEW BIBLATEX BIBLIOGRAPHY-----------------------------------------------
+\usepackage[eprint=false,backend=biber,style = ieee]{biblatex} % Upgrades Bibliography Block Ragged helps break lines in url fixes error
 \addbibresource{../BibFile.bib} %%% For biblatex
 %e.g to add page number \footfullcite[chapter, p.~215]{AAIB}
 % of \footnote{Footnote text goes here}
@@ -24,7 +48,6 @@
 % Note urldate field must be in yyyy-mm-dd to work - use online type
 % Remeber to use \printbibliography in the footer
 % -----------------------------------------------------------------------------------
-% \usepackage{sectsty}
 \usepackage{url}
 
 %%% --- The following two lines are what needs to be added --- %%%
@@ -34,25 +57,9 @@
 \usepackage{amssymb,amsmath}
 \numberwithin{figure}{section} %%%%% <<<<<< Puts Figure Numbering into Sections
 \numberwithin{table}{section}%%%%% <<<<<< Puts Tables Numbering into Sections
-\usepackage{ifxetex,ifluatex}  %<<<<<<<<< Edit FONT HERE
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \setmainfont[
- BoldFont={AvenirNext-Medium},ItalicFont={AvenirNext-Italic},
- BoldItalicFont={AvenirNext-MediumItalic}]{AvenirNext-Regular}
-  \else
-  % Font Package for XeLatex
-    \usepackage{fontspec}
-    \setmainfont{AvenirNext-Regular}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
 \usepackage[fit]{truncate} %Truncates headers that are too long
 \usepackage[headheight=26pt,headsep=0.15cm]{geometry}
+\usepackage[bottom]{footmisc} %%% Pushes footnote to bottom and to the margin
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{extramarks}
@@ -60,6 +67,10 @@
 \usepackage{lipsum}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{pbox}
+\usepackage{colortbl} % http://ctan.org/pkg/xcolor
+\usepackage{hhline}
 \graphicspath{{../TempImg/}{../Img/}}%<<<<<<<<< Location of Template Images and Other Images, Add folders here
 \usepackage{subfig}
 \usepackage{wrapfig}
@@ -73,16 +84,18 @@
 \usepackage{multicol} %for mulitple colums in lists
 \usepackage{booktabs} %<<<<<<<<< Table drawing package
 \usepackage[table,xcdraw]{xcolor} %<<<<<<<<< Table drawing package
-\usepackage{svg}
+% \usepackage{tabularx} %< Special table package with line breaks
+\usepackage{ltablex}
+%\usepackage{svg}
+\usepackage[table]{xcolor}
 \usepackage{scrextend} %call footnotes
 \usepackage[colorlinks, linkcolor = black, citecolor = black, filecolor = black, urlcolor = blue]{hyperref} % Creates Hyperlinks for references - add [colorlinks] for coloured hyperlinks
 \usepackage{changepage} %Allows Adjust width to be used for the document (indenting paragraphs)
 \usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
 \usepackage{pdflscape} %Change Pages from Portrait to Landscape
-\usepackage{color,soul} %% Highlights text for markup
-% \usepackage[compact]{titlesec}
 
-\usepackage{pdfpages} %Allows Pdfpages to be added to the document use \includepdf[pages={1}]{myfile.pdf}
+% \usepackage{tocloft}
+% \setlength{\cftfignumwidth}{2.85em}
 %%%%%%%For Condensed Report Format%%%%%%%%%%%%%%
 \usepackage{titlesec}
 \titlespacing\section{0pt}{6pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -94,8 +107,6 @@
 % \titlespacing*{\section}{0pt}{1.1\baselineskip}{\baselineskip}
 
 \renewcommand*{\thefootnote}{\alph{footnote}} %%% Changes footnotes to letters
-\usepackage[bottom]{footmisc} %%% Pushes footnote to bottom and to the margin
-
 \DeclareCiteCommand{\footcite}[\mkbibfootnote]
 {\usebibmacro{cite:init}%
 \usebibmacro{prenote}}
@@ -174,7 +185,7 @@
 \newcommand{\Faculty}{Faculty of Engineering Sciences}
 \newcommand{\UniCrest}{logoucl.png}
 \newcommand{\UniLogo}{logoucl.png}%<<<<<<<<< Make Sure Files are in the Template
-\newcommand{\GroupName}{group 3 - ixn website}
+\newcommand{\GroupName}{group \#}
 \newcommand{\StudentNameA}{Author}
 \newcommand{\StudentNumberA}{author@ucl.ac.uk}
 \newcommand{\StudentNameC}{Author}
@@ -188,7 +199,6 @@
 % -----------------------------------------------------------------------------------
 %        PACKAGES FOR MARKDOWN CONVERSION - FOR USE If Using Markdown to Latex
 % -----------------------------------------------------------------------------------
-\usepackage{fixltx2e} % provides \textsubscript
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -214,8 +224,6 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-% \setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
 \let\oldparagraph\paragraph
 \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
@@ -226,25 +234,11 @@
 \fi
 
 % -----------------------------------------------------------------------------------
-%                   WORD COUTNER - for XeLaTex
-% -----------------------------------------------------------------------------------
-% \usepackage{xesearch}
-% \newcounter{words}
-% \newenvironment{counted}{%
-%   \setcounter{words}{0}
-%   \SearchList!{wordcount}{\stepcounter{words}}
-%     {a?,b?,c?,d?,e?,f?,g?,h?,i?,j?,k?,l?,m?,
-%     n?,o?,p?,q?,r?,s?,t?,u?,v?,w?,x?,y?,z?}
-%   \UndoBoundary{'}
-%   \SearchOrder{p;}}{%
-%   \StopSearching}
-
-% -----------------------------------------------------------------------------------
 %                   MARGINS, HEADERS & FOOTERS
 % -----------------------------------------------------------------------------------
  \geometry{
- left=25.4mm,
- right=25.4mm,
+ left=20.4mm,
+ right=20.4mm,
  top=25.4mm,
  bottom=25.4mm,
  }
@@ -254,8 +248,8 @@
 \lhead{\includegraphics[width = 0.15\textwidth]{\UniLogo}}
 % \chead{\AssignmentTitle}
 % \rhead{}
-\lfoot{\StudentNameA, \StudentNameB, \StudentNameC}
-\cfoot{}
+\lfoot{\StudentNameA}
+\cfoot{\AssignmentTitle}
 \rfoot{Page \thepage} %%%% note the footer is swapped when page numbering style changes
 \renewcommand\headrulewidth{0.4pt}
 \renewcommand\footrulewidth{0.4pt}
@@ -317,13 +311,13 @@
 %	HEADING SECTION
 %----------------------------------------------------------------------------------------
 		\normalfont \normalsize \textsc{\ModuleTitle} \\ [10pt]
-    \normalfont \normalsize \textsc{\DegreeTitle} \\ [25pt]
+    \normalfont \normalsize \textsc{\DegreeTitle} \\ [15pt]
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
-		\horrule{0.5pt} \\[0.4cm]
+		\horrule{0.5pt} \\[0.3cm]
 		\huge \textbf{\AssignmentTitle} \\
-		\horrule{2pt} \\[0.5cm]
+		\horrule{2pt} \\[0.3cm]
 %----------------------------------------------------------------------------------------
 %	HEADING SECTION
 %----------------------------------------------------------------------------------------
@@ -350,16 +344,12 @@
   \begin{flushleft} \large
   \emph{Authors:} \\
   	\textbf{\StudentNameA} \\
-    \textbf{\StudentNameB} \\
-    \textbf{\StudentNameC}
   \end{flushleft}
 \end{minipage}\qquad
 \begin{minipage}{0.4\textwidth}
   \begin{flushright} \large
      \emph{Authors Email:} \\
      (\StudentNumberA) \\
-    (\StudentNumberB) \\
-    (\StudentNumberC)
     \end{flushright}
 \end{minipage}\\[0.6cm]
 
@@ -377,19 +367,16 @@
 \vfill % Fill the rest of the page with whitespace
 \end{titlepage}
 
-% \setcounter{page}{3}
-
 \newpage
-
 
 % -----------------------------------------------------------------------------------
 %                             	 ABSTRACT
 % -----------------------------------------------------------------------------------
 
-\addcontentsline{toc}{section}{Abstract}
-\begin{abstract}
-  Abstract text
-\end{abstract}
+\addcontentsline{toc}{section}{Executive Summary}
+\section*{Executive Summary}\label{executivesummary}
+Executive summary can go here
+
 \newpage
 
 \addcontentsline{toc}{section}{Acknowledgements}
@@ -407,9 +394,15 @@ Acknowledgments text
 
 \addcontentsline{toc}{section}{List of Tables}
 \listoftables
+
+\newpage
 \addcontentsline{toc}{section}{List of Figures}
 \listoffigures
 
+\newpage
+
+\addcontentsline{toc}{section}{Glossary}
+\section*{Glossary}\label{glossary}
 \newpage
 
 \addcontentsline{toc}{section}{List of Acronyms}
@@ -419,10 +412,11 @@ Acknowledgments text
 
 \newpage
 
+
 %% -----------------------------------------------------------------------------------
 %%                          	  INTRODUCTION
 %% -----------------------------------------------------------------------------------
 \clearpage
 \rfoot{Page \thepage\ of \pageref{LastPage}}
+
 \pagenumbering{arabic}
-% \begin{counted} %<<<<<<<<<<<<<<STARTS WORD COUNTER
